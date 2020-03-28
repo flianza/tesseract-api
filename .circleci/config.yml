@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: appsvc/dotnetcore
+      - image: codekinson/dotnet-circleci:2.0.1
     steps:
       - checkout
       - run:
@@ -13,6 +13,9 @@ jobs:
           name: Build
           command: dotnet build -c Release
           working_directory: src/Tesseract.Api
+      - run:
+          name: Install Docker client
+          command: apk add docker-cli
       - run:
           name: Build and push Docker image
           command: |
