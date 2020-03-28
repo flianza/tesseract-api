@@ -4,10 +4,17 @@
   win: circleci/windows@2.2.0
 
  jobs:
-   build:
-     executor: win/default     
-    
-     steps:
-       - checkout
-       - run: dotnet restore
-       - run: dotnet build
+  build:
+   description: Build application with Release configuration
+   executor:
+    name: windows/default
+   steps:
+    - checkout
+    - run:
+     name: "Build Application according to some given configuration"
+     command: dotnet.exe build --configuration Release
+
+ workflows:
+  build:
+   jobs:
+    - build
