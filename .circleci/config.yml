@@ -20,5 +20,5 @@ jobs:
           command: |
             docker build -t tesseract-api .
             echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
-            docker push francolianza/tesseract-api
+            docker push francolianza/tesseract-api:test
           working_directory: src/Tesseract.Api
