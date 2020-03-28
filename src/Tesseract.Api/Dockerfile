@@ -16,5 +16,4 @@ ARG source
 ENV ASPNETCORE_URLS http://*:7020
 ENV ASPNETCORE_ENVIRONMENT=Docker
 EXPOSE 7020
-COPY ${source:-/build} .
 ENTRYPOINT ["dotnet", "Tesseract.Api.dll"]
