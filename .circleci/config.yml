@@ -13,9 +13,8 @@ jobs:
           name: Build
           command: dotnet build -c Release
           working_directory: src/Tesseract.Api
-      - run:
-          name: Install Docker client
-          command: apk add docker-cli
+      - setup_remote_docker:
+          version: 18.09.3
       - run:
           name: Build and push Docker image
           command: |
