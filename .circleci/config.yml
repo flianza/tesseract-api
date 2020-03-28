@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: codekinson/dotnet-circleci:2.0.1
+      - image: jetcipher/circleci-dotnet-core:3.0
     steps:
       - checkout
       - run:
