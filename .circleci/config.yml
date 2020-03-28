@@ -1,20 +1,17 @@
- version: 2.1
-
- orbs:
-  win: circleci/windows@2.2.0
-
- jobs:
+version: 2
+jobs:
   build:
-   description: Build application with Release configuration
-   executor:
-    name: windows/default
-   steps:
-    - checkout
-    - run:
-     name: "Build Application according to some given configuration"
-     command: dotnet.exe build --configuration Release
-
- workflows:
-  build:
-   jobs:
-    - build
+    docker:
+      - image: jetcipher/circleci-dotnet-core:3.0
+    steps:
+      - checkout
+      - run:
+          name: Restore
+          command: dotnet restore
+          working_directory: src/Tesseract.Api
+      - run:
+          name: Build
+          command: dotnet build -c Release
+          working_directory: src/Tesseract.Api
+      - setup_remote_docker:
+          docker_layer_caching: true
