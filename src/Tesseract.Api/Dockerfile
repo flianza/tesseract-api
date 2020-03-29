@@ -10,10 +10,7 @@ RUN wget -O aspnetcore.tar.gz https://dotnetcli.azureedge.net/dotnet/aspnetcore/
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && apk update && apk add --no-cache libgdiplus
 
 RUN apk update && apk add --no-cache wget && apk add --no-cache --update tesseract-ocr
-
-RUN apk --update add imagemagick && rm -rf /var/cache/apk/*
-
-RUN apk --update add ghostscript && rm -rf /var/cache/apk/*
+RUN apk --no-cache add msttcorefonts-installer fontconfig && update-ms-fonts && fc-cache -f
  
 WORKDIR /app
 ARG source
