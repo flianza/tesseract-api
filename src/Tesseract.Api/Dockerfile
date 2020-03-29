@@ -11,6 +11,10 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposit
 
 RUN apk update && apk add --no-cache wget && apk add --no-cache --update tesseract-ocr
 
+RUN apk --update add imagemagick && rm -rf /var/cache/apk/*
+
+RUN apk --update add ghostscript && rm -rf /var/cache/apk/*
+ 
 WORKDIR /app
 ARG source
 ENV ASPNETCORE_URLS http://*:7020
